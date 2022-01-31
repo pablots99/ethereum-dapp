@@ -6,7 +6,7 @@
     contract CampaingFactory {
         Campaing[] public campaings;
 
-        function creatCompain(uint min) public {
+        function createCampaing(uint min) public {
             Campaing c = new Campaing(min,msg.sender);
             campaings.push(c);
         }
