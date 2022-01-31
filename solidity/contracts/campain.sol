@@ -2,6 +2,15 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+
+contract CampaingFactory {
+	address[] public campaings;
+
+	function creatCompain(uint min) public {
+		new Campaing(min,msg.sender);
+	}
+}
+
 contract Campaing{
 
 
@@ -9,7 +18,7 @@ contract Campaing{
         uint id;
         string description;
         uint value;
-        address  recipent;//addres the money will be sent to
+        address  recipent; //addres the money will be sent to
         uint    vote_yes;
         bool    complete;
         mapping(address => bool) approvals;
@@ -22,10 +31,11 @@ contract Campaing{
     Request[] public            requests;
     mapping(address => bool) public     approvers;
 
-    constructor(uint _min_contribution) {
+    constructor(uint _min_contribution,address _manager) {
 
-        manager = msg.sender;
+        manager = _manager;
         minContribution = _min_contribution;
+
     }
 
     modifier restircted() {
