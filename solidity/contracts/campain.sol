@@ -4,11 +4,16 @@ pragma solidity >=0.7.0 <0.9.0;
 
 
 contract CampaingFactory {
-	address[] public campaings;
+	Campaing[] public campaings;
 
 	function creatCompain(uint min) public {
-		new Campaing(min,msg.sender);
+		Campaing c = new Campaing(min,msg.sender);
+        campaings.push(c);
 	}
+
+    function getCampaings() public view returns (Campaing[] memory ) {
+        return campaings;
+    }
 }
 
 contract Campaing{
