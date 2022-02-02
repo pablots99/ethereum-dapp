@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 
 const bull = (
@@ -18,11 +18,19 @@ const bull = (
   );
 
 export const CampaignCard = ({ campaings }) => {
+	const copyToClipboard = (text,navigator) => {
+		if(navigator !== undefined)
+			navigator.clipboard.writeText(text)
+	}
 	return (
 		<Card sx={{ minWidth: 275 }}>
 			<CardContent>
 				<Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 					contract
+
+					{/* <Button onClick={copyToClipboard(campaings,navigator)}>
+						<ContentCopyIcon fontSize="small" ></ContentCopyIcon>
+					</Button> */}
 				</Typography>
 				<Typography variant="h4" component="div">
 					{campaings.slice(0, 8)}...
@@ -30,7 +38,7 @@ export const CampaignCard = ({ campaings }) => {
 			</CardContent>
 
 			<CardActions>
-				<Button size="small">Learn More</Button>
+				<Button size="small">View Campaign</Button>
 			</CardActions>
 
 		</Card>
