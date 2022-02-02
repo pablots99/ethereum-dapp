@@ -6,8 +6,8 @@
     contract CampaingFactory {
         Campaing[] public campaings;
 
-        function createCampaing(uint min) public {
-            Campaing c = new Campaing(min,msg.sender);
+        function createCampaing(uint min,string memory name, string memory description) public {
+            Campaing c = new Campaing(min,msg.sender,name,description);
             campaings.push(c);
         }
 
@@ -28,7 +28,8 @@
             bool    complete;
             mapping(address => bool) approvals;
         }
-
+        string    public            name;
+        string    public            description;
         uint      private           count_requests;
         uint      private           contributors;
         address   public            manager;
@@ -36,9 +37,11 @@
         Request[] public            requests;
         mapping(address => bool) public     approvers;
 
-        constructor(uint _min_contribution,address _manager) {
+        constructor(uint _min_contribution,address _manager,string memory _name,  string memory _description) {
 
             manager = _manager;
+            name = _name;
+            description = _description;
             minContribution = _min_contribution;
 
         }

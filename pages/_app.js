@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import theme from '../components/theme';
 import createEmotionCache from '../components/createEmotionCache';
-
+import '../styles/layout.css'
 
 const clientSideEmotionCache = createEmotionCache();
 export default function MyApp(props) {
