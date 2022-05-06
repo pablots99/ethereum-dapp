@@ -34,5 +34,4 @@ const create_contract = async() => {
 	campain_contract = await new web3.eth.Contract(campaing.abi,campaing_address[0]);
 }
 
-
 create_contract();

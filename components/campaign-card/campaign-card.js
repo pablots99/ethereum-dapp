@@ -5,7 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 const bull = (
@@ -18,10 +19,6 @@ const bull = (
   );
 
 export const CampaignCard = ({ campaings }) => {
-	const copyToClipboard = (text,navigator) => {
-		if(navigator !== undefined)
-			navigator.clipboard.writeText(text)
-	}
 	return (
 		<Card sx={{ minWidth: 275 }}>
 			<CardContent>
@@ -38,7 +35,10 @@ export const CampaignCard = ({ campaings }) => {
 			</CardContent>
 
 			<CardActions>
-				<Button size="small">View Campaign</Button>
+				{/* <Button size="small">View Campaign</Button> */}
+				<Link href={"/campaign?contract="+campaings}>
+					<a><Button size="small">View Campaign</Button></a>
+				</Link>
 			</CardActions>
 
 		</Card>

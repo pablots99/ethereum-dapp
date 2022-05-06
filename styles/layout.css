@@ -11,6 +11,10 @@
 	border-color: grey; */
 }
 
+.no-link {
+	text-decoration: none;
+}
+
 .footer {
 	width: 100%;
 	text-align: center;

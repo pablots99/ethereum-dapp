@@ -30,7 +30,7 @@
         }
         string    public            name;
         string    public            description;
-        uint      private           count_requests;
+        uint      public           count_requests;
         uint      private           contributors;
         address   public            manager;
         uint      public            minContribution;
@@ -55,6 +55,10 @@
             require(msg.value >= minContribution);
             contributors++;
             approvers[msg.sender] = true;
+        }
+
+        function getBalance() public view returns(uint){
+            return address(this).balance;
         }
 
         function makeRequest(string memory _description, uint  _value,address  _recipent) public restircted{

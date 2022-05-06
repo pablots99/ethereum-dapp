@@ -1,6 +1,6 @@
-const path = require('path')
-const fs   = require('fs-extra')
-const solc  =require('solc');
+const path =  require('path')
+const fs   =  require('fs-extra')
+const solc  = require('solc');
 
 
 //delete build folder if exists

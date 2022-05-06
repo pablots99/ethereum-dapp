@@ -7,10 +7,21 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../components/theme';
 import createEmotionCache from '../components/createEmotionCache';
 import '../styles/layout.css'
+import Router from 'next/router';
+import { Backdrop, CircularProgress } from '@mui/material';
+
 
 const clientSideEmotionCache = createEmotionCache();
+
 export default function MyApp(props) {
+ const [open, setOpen] = React.useState(false);
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  Router.onRouteChangeStart = url => {
+	setOpen(true);
+  }
+  Router.onRouteChangeComplete = () => {
+	setOpen(false);
+  }
 
   return (
     <CacheProvider value={emotionCache}>
@@ -22,7 +33,11 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
+	  <Backdrop  open={open}>
+  			<CircularProgress color="secondary" />
+	  </Backdrop>
     </CacheProvider>
+
   );
 }
 
