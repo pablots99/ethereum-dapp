@@ -1,4 +1,4 @@
-# ./srcs/ethereum/build
-# ./srcs/node_modules
-# .env
+./srcs/ethereum/build
+./srcs/node_modules
+.env
 node_modules
